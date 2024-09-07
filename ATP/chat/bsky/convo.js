@@ -1,3 +1,5 @@
+import { API } from './../../../Base/API.js'
+
 export function deleteMessageForSelf() {}
 export function getConvoForMembers() {}
 export function getConvo() {}

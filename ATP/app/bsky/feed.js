@@ -1,3 +1,5 @@
+import { API } from './../../../Base/API.js'
+
 export function describeFeedGenerator() {}
 export function getActorFeeds() {}
 export function getActorLikes() {}

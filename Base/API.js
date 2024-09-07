@@ -5,7 +5,6 @@ export class API {
     const options = {
       method,
       mode: 'cors',
-      credentials: 'omit',
       referrerPolicy: "origin-when-cross-origin",
       headers: {
         "accept": "*/*",
@@ -19,18 +18,23 @@ export class API {
 
     try {
       const response = await fetch(`${this.baseUrl}/${atp}`, options)
+      const responseBody = await response.text()
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
+        throw new Error(`HTTP error! Status: ${response.status}, Response: ${responseBody}`)
       }
-      return response.json()
+      return JSON.parse(responseBody)
     } catch (error) {
       console.error('API request error:', error)
       throw error
     }
   }
 
-  static get(atp, token = false, data) {
-    const queryString = Object.keys(data).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&')
+  static get(atp, token = false, data = null) {
+    let queryString = data && Object.keys(data).map(key => {
+      const value = Array.isArray(data[key]) ? data[key].map(value => encodeURIComponent(value)).join(',') : encodeURIComponent(data[key])
+      return `${encodeURIComponent(key)}=${value}`
+    }).join('&')
+
     return this.request('GET', `${atp}?${queryString}`, token)
   }
 

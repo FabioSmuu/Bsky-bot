@@ -1,15 +1,33 @@
-import { API } from './../../../Base/api.js';
+import { API } from './../../../Base/API.js'
 
 export function applyWrites() {}
 
-export function createRecord(did, token, text) {
+export function createRecord(token, did, post) {
+	const { text, reply } = post
+	const record = {
+		text: '',
+
+	}
+
+	if (text) record.text = text
+	if (reply) {
+		const { root, parent } = reply
+		record.reply = {
+			root: {
+				uri: root.uri,
+				cid: root.cid
+			},
+			parent: {
+				uri: parent.uri,
+				cid: parent.cid
+			}
+		}
+	}
+
 	return API.post('com.atproto.repo.createRecord', token, {
-		$type: 'app.bsky.feed.post',
 		repo: did,
 		collection: 'app.bsky.feed.post',
-		record: { text, createdAt: new Date().toISOString() }
-		// record: { text, createdAt: '2000-10-10T10:00:01.684Z' }
-
+		record: { text }
 	})
 }
 

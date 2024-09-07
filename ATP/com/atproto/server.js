@@ -1,4 +1,4 @@
-import { API } from './../../../Base/api.js';
+import { API } from './../../../Base/API.js'
 
 export function activateAccount() {}
 export function checkAccountStatus() {}

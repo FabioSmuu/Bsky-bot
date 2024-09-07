@@ -1,3 +1,5 @@
+import { API } from './../../../Base/API.js'
+
 export function getRecommendedDidCredentials() {}
 export function requestPlcOperationSignature() {}
 export function resolveHandle() {}
