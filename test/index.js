@@ -12,19 +12,13 @@ console.log(getPreferences)
 const getProfile = await ATP.app.bsky.actor.getProfile(token, 'fabiosmuu.bsky.social')
 console.log(getProfile)
 
-const getProfiles = await ATP.app.bsky.actor.getProfiles(token, ['fabiosmuu.bsky.social', 'bolhadev.com'])
-console.log(getProfiles)
-
 const getProfiles = await ATP.app.bsky.actor.getSuggestions(token, 6, '0')
 console.log(getProfiles)
 
 const searchActorsTypeahead = await ATP.app.bsky.actor.searchActorsTypeahead(token, 'fabiosmuu')
 console.log(searchActorsTypeahead)
 
-
-
-
-
+*/
 
 
 
