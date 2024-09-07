@@ -22,10 +22,16 @@ console.log(searchActorsTypeahead)
 
 
 
+const follow = await ATP.com.atproto.repo.createRecord(token, did, {
+	subject: 'did:plc:ztobndlgwjyfnwe2mukpzwb2'
+})
+
+ console.log(follow)
+
 
 /*
 const teste = await ATP.com.atproto.repo.createRecord(token, did, {
-	text: 'Sou um viajante do tempo !'
+	text: 'Post feito por api'
 })
 
  console.log(teste)

@@ -3,10 +3,18 @@ import { API } from './../../../Base/API.js'
 export function applyWrites() {}
 
 export function createRecord(token, did, post) {
-	const { text, reply } = post
+	const { text, reply, subject } = post
+
+	let collection = 'app.bsky.feed.post'
+
 	const record = {
 		text: '',
+		createdAt: new Date().toISOString()
+	}
 
+	if (subject) {
+		collection = 'app.bsky.graph.follow'
+		record.subject = subject
 	}
 
 	if (text) record.text = text
@@ -26,8 +34,8 @@ export function createRecord(token, did, post) {
 
 	return API.post('com.atproto.repo.createRecord', token, {
 		repo: did,
-		collection: 'app.bsky.feed.post',
-		record: { text }
+		collection,
+		record
 	})
 }
 
