@@ -1,6 +1,8 @@
 # Base para bot [BlueSky](https://bsky.app/profile/fabiosmuu.bsky.social).
 Construir esta base em cima da [API Oficial da BlueSky](https://docs.bsky.app/docs/api/at-protocol-xrpc-api).
 
+> **Observação** A senha no arquivo. env deste repositório se trata de uma senha temporaria desativada.
+
 <br>
 
 > **Aviso**: Por segurança é recomendado a criação de uma senha genérica em:
